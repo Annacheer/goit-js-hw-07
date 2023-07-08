@@ -25,7 +25,11 @@ function onClick(event) {
         return;
     }
 
-const largeImageUrl = event.target.dataset.source;
-  console.log('URL великого зображення:', largeImageUrl);
-    
+const largeImageUrl = event.target.dataset.source;    
+    const instance = basicLightbox.create(`
+    <img src="${largeImageUrl}" alt="${event.target.alt}">
+`);
+
+instance.show()
 } 
+
