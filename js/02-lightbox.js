@@ -16,3 +16,12 @@ ${imagesListArr.join('')}
  `;
 galleryList.insertAdjacentHTML('beforeend', listTemplate);
 
+const container = document.querySelector('.gallery');
+container.addEventListener('click', onClick);
+function onClick(event) {
+    event.preventDefault();
+    if (event.target.nodeName !== 'IMG') {
+        return;
+    }
+    const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, });
+}
