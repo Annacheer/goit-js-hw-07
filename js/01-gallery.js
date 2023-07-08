@@ -19,6 +19,9 @@ galleryList.insertAdjacentHTML('beforeend', listTemplate);
 
 const container = document.querySelector('.gallery');
 container.addEventListener('click', onClick);
+
+let instance;
+
 function onClick(event) {
     event.preventDefault();
     if (event.target.nodeName !== 'IMG') {
@@ -26,10 +29,16 @@ function onClick(event) {
     }
 
 const largeImageUrl = event.target.dataset.source;    
-    const instance = basicLightbox.create(`
+ instance = basicLightbox.create(`
     <img src="${largeImageUrl}" alt="${event.target.alt}">
 `);
 
 instance.show()
 } 
 
+document.addEventListener('keyup', closeGallery);
+function closeGallery(event) {
+  if (event.code === 'Escape') {
+    instance.close();
+  }
+}
