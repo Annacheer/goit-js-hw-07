@@ -11,17 +11,8 @@ return `<li class="gallery__item"><a class="gallery__link" href="${image.origina
   </a>
 </li>`
 })
-const listTemplate = `
-${imagesListArr.join('')}
- `;
+const listTemplate = imagesListArr.join('');
 galleryList.insertAdjacentHTML('beforeend', listTemplate);
 
-const container = document.querySelector('.gallery');
-container.addEventListener('click', onClick);
-function onClick(event) {
-    event.preventDefault();
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
-    const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, });
-}
+
+    const lightbox = new SimpleLightbox('.gallery__link', { captionsData: 'alt', captionDelay: 250, });
